@@ -18,6 +18,9 @@
         </nav>
       </header>
       <section class="round">
+        <% flash.each do |key, value| %>
+          <div style="color: red" class="flash <%= key %>"><%= value %></div>
+        <% end %>
         <%= yield %>
       </section>
     </div>
