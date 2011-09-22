@@ -1,4 +1,15 @@
 SEPersonalWeb::Application.routes.draw do
+  resources :users
+  get "users/new"
+
+  get "pages/signup"
+
+  get "pages/home"
+  match '/home', :to => 'pages#home'
+  match '/signup',  :to => 'users#new'
+  root :to => 'pages#home'
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
