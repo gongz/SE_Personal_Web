@@ -1,7 +1,8 @@
 <h1></h1>
 <p></p>
-<%= link_to "Login",signin_path,:class => "login_button round" %>
-<%= link_to "Sign up now!",signup_path, :class => "signup_button round" %>
-
+<% if not signed_in? %>
+    <%= link_to "Login",signin_path,:class => "login_button round" %>
+    <%= link_to "Sign up now!",signup_path, :class => "signup_button round" %>
+<% end %>
 
 
