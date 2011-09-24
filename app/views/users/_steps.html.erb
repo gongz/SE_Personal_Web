@@ -1,0 +1,15 @@
+<table>
+    <ul class="routine">
+        <tr>
+            <th>Step Name</th>
+            <th>Step Level</th>
+        </tr>
+        <% @user.dance.each do |step| %>
+            <tr>
+                <td><%= step.name %></td>
+                <td><%= step.level %></td>
+            </tr>
+            <% end %>
+    </ul>
+    <%= will_paginate (@routine)%>
+</table>
