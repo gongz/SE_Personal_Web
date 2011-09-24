@@ -150,3 +150,11 @@ a.login_button {
   font-size: 12px;
   list-style: square;
 }
+
+div.right_side{
+
+  margin-right: 0.6em;
+  vertical-align: top;
+  background: #fff;
+  position: relative; left:55em; bottom:36em
+}

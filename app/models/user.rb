@@ -1,4 +1,10 @@
 class User < ActiveRecord::Base
+
+
+  has_many :routine, :foreign_key => "user_id",
+                           :dependent => :destroy
+  has_many :dance, :through => :routine, :source => :dance
+
   attr_accessor :password
   attr_accessible :name, :email, :password, :password_confirmation
 
@@ -29,6 +35,14 @@ class User < ActiveRecord::Base
     end
     end
 
+
+  def add_dance!(dance)
+    routine.create!(:dance_id => dance.id)
+  end
+
+  def del_dance!(routine)
+    routine.find_by_routine_id(routine).destroy
+  end
 
   private
 

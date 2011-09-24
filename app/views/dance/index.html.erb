@@ -1,20 +1,36 @@
 <h1>Waltz</h1>
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Lever</th>
-    <th>Info</th>
-    <th></th>
-    <th></th>
-  </tr>
+<% @user ||= current_user %>
+<div id="ajax" >
+    <table >
+        <ul>
+            <tr>
+            <th>Step Name</th>
+            <th>Step Level</th>
+            <th>Info</th>
+            </tr>
+            <% @dances.each do |dance| %>
+                <tr>
+                <td><%= dance.name %></td>
+                <td><%= dance.level %></td>
+                <td><%= dance.info %></td>
+                <%= form_for current_user.routine.build(:dance_id =>dance.id)   do |f| %>
+                <div><%= f.hidden_field :dance_id %></div>
+                <td class="actions"><%= f.submit "Add" %></td>
+                <% end %>
+                </tr>
+                <% end %>
+        </ul>
+        <%= will_paginate (@dances)%>
+    </table>
+</div>
+<div class="right_side round" >
+    <%= render "users/count"%>
+    <%= render "users/steps"%>
+</div>
 
-<% @dances.each do |dance| %>
-  <tr>
-    <td><%= dance.name %></td>
-    <td><%= dance.level %></td>
-    <td><%= dance.info %></td>
 
-  </tr>
-<% end %>
-</table>
+
+
+
+
 
