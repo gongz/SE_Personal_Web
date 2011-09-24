@@ -1,7 +1,10 @@
 SEPersonalWeb::Application.routes.draw do
-  get "pages/home"
+
   get "routines/create"
+
   get "routines/destroy"
+
+  root :to => 'pages#home'
   resources :users
   resources :sessions, :only => [:new, :create, :destroy]
   resources :routines, :only => [:create, :destroy]
