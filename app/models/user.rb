@@ -35,8 +35,7 @@ class User < ActiveRecord::Base
     end
     end
 
-
-  def add_dance!(dance)
+   def add_dance!(dance)
     routine.create!(:dance_id => dance.id)
   end
 

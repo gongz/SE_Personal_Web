@@ -1,6 +1,6 @@
 <h1>Waltz</h1>
 <% @user ||= current_user %>
-<div id="ajax" >
+<div  >
     <table >
         <ul>
             <tr>
@@ -13,9 +13,9 @@
                 <td><%= dance.name %></td>
                 <td><%= dance.level %></td>
                 <td><%= dance.info %></td>
-                <%= form_for current_user.routine.build(:dance_id =>dance.id)   do |f| %>
+                <%= form_for current_user.routine.build(:dance_id =>dance.id), :remote => true do |f| %>
                 <div><%= f.hidden_field :dance_id %></div>
-                <td class="actions"><%= f.submit "Add" %></td>
+                <td class="actions" ><%= f.submit "Add" %></td>
                 <% end %>
                 </tr>
                 <% end %>
@@ -23,9 +23,8 @@
         <%= will_paginate (@dances)%>
     </table>
 </div>
-<div class="right_side round" >
-    <%= render "users/count"%>
-    <%= render "users/steps"%>
+<div class="right_side round" id="ajax">
+
 </div>
 
 

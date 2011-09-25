@@ -1,10 +1,14 @@
 class RoutinesController < ApplicationController
   def create
    @dance = Dance.find(params[:routine][:dance_id])
+   if signed_in?
+      @user= current_user
+      @routine = Routine.paginate(:page => params[:page])
+  end
    current_user.add_dance!(@dance)
    respond_to do |format|
       format.html { redirect_to dance_path }
-      #format.js
+      format.js
    end
   end
 
@@ -14,11 +18,4 @@ class RoutinesController < ApplicationController
   #  current_user.del_dance!(@routine)
   #  redirect_to dance_path
   #end
-
-  def show
-    @user = current_user
-    @routine = @user.find(params[:id])
-    @routine = @routine.paginate(:page => params[:page])
-  end
-
 end

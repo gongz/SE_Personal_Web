@@ -1,1 +1,6 @@
-$("ajax").update("foobar")
+$('#ajax').prepend('<%=escape_javascript render('users/count') %>');
+$('#ajax').css('background',"grey");
+$('#ajax').show('slow');
+
+
+

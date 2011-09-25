@@ -152,9 +152,7 @@ a.login_button {
 }
 
 div.right_side{
-
-  margin-right: 0.6em;
-  vertical-align: top;
+  width: 20%;
   background: #fff;
-  position: relative; left:55em; bottom:36em
+  position: relative; left:50em; bottom:22em
 }
