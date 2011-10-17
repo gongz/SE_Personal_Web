@@ -20,10 +20,15 @@ class User < ActiveRecord::Base
                        :length       => { :within => 6..40 }
   before_save :encrypt_password
 
-  def has_password?(submitted_password)
-    encrypted_password == encrypt(submitted_password)
-  end
+
+
+    def has_password?(submitted_password)
+      encrypted_password == encrypt(submitted_password)
+    end
+
     class << self
+
+
     def authenticate(email, submitted_password)
       user = find_by_email(email)
       (user && user.has_password?(submitted_password)) ? user : nil
@@ -35,12 +40,12 @@ class User < ActiveRecord::Base
     end
     end
 
-   def add_dance!(dance)
-    routine.create!(:dance_id => dance.id)
+   def add_dance!(dance,number)
+    routine.create!(:dance_id => dance.id, :routine_number => number)
   end
 
   def del_dance!(routine)
-    routine.find_by_routine_id(routine).destroy
+    routine.destroy
   end
 
   private

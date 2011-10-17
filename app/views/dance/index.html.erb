@@ -1,4 +1,5 @@
 <h1>Waltz</h1>
+
 <% @user ||= current_user %>
 <div  >
     <table >
@@ -7,12 +8,19 @@
             <th>Step Name</th>
             <th>Step Level</th>
             <th>Info</th>
+            <th>Finish L/R Foot</th>
             </tr>
             <% @dances.each do |dance| %>
                 <tr>
                 <td><%= dance.name %></td>
                 <td><%= dance.level %></td>
                 <td><%= dance.info %></td>
+                <% if dance.laststep == true %>
+                   <td>Left</td>
+                <% else %>
+                   <td>Right</td>
+                <% end %>
+
                 <% if signed_in? %>
                     <%= form_for current_user.routine.build(:dance_id =>dance.id), :remote => true do |f| %>
                     <div><%= f.hidden_field :dance_id %></div>

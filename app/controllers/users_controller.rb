@@ -21,4 +21,8 @@ class UsersController < ApplicationController
       render 'new'
     end
   end
+
+  def index
+    flash.now[:error] = "Sorry you are attempting to dance on one foot..."
+  end
 end

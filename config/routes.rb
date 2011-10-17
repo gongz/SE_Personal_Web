@@ -7,12 +7,13 @@ SEPersonalWeb::Application.routes.draw do
   root :to => 'pages#home'
   resources :users
   resources :sessions, :only => [:new, :create, :destroy]
-  resources :routines, :only => [:create, :destroy]
+  resources :routines
   match '/home', :to => 'pages#home'
   match '/signup',  :to => 'users#new'
   match '/signin',  :to => 'sessions#new'
   match '/signout', :to => 'sessions#destroy'
   match '/dance', :to => 'dance#index'
+  match '/delete', :to => 'routine#destroy'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -1,15 +1,27 @@
+<html>
+<%= stylesheet_link_tag :all %>
+<%= javascript_include_tag :defaults %>
+<%= csrf_meta_tag %>
+</html>
 <table>
     <ul class="routine" >
         <tr>
+            <th>No.</th>
             <th>Step Name</th>
             <th>Step Level</th>
         </tr>
-        <% @user.dance.each do |step| %>
+        <% @user.routine.each do |step| %>
             <tr>
-                <td><%= step.name %></td>
-                <td><%= step.level %></td>
+                <td><%= step.routine_number %></td>
+                <td><%= Dance.find_by_id(step.dance_id).name %></td>
+                <td><%= Dance.find_by_id(step.dance_id).level %></td>
+                <%= form_for(current_user.routine.find_by_routine_number(step.routine_number),
+                      :html => { :method => :delete }) do |f| %>
+                <div><%= f.hidden_field :id %></div>
+                <td class="actions" ><%= f.submit "Delete" %></td>
+                <% end %>
             </tr>
-            <% end %>
+        <% end %>
     </ul>
-    <%= will_paginate (@routine)%>
+    <%= will_paginate @routine%>
 </table>
