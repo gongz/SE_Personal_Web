@@ -1,0 +1,11 @@
+common: &common
+  dev_key: AI39si5HMgbbLEtdK8-UeaDLvOaxbZbbxM1aaIFrhiAGlpqagceuQJQ2XJMMyZrlss3GHMKCWePSBWI2W717s7JkxU51UXFXiQ
+  username:  gongzhang07@gmail.com
+  password:  zufacqczbfpxaamu
+  
+test:
+  <<: *common
+development:
+  <<: *common
+production:
+  <<: *common

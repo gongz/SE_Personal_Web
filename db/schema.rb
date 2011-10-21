@@ -12,6 +12,20 @@
 
 ActiveRecord::Schema.define(:version => 20111016030309) do
 
+  create_table "comments", :force => true do |t|
+    t.string   "title",            :limit => 50, :default => ""
+    t.text     "comment"
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "comments", ["commentable_id"], :name => "index_comments_on_commentable_id"
+  add_index "comments", ["commentable_type"], :name => "index_comments_on_commentable_type"
+  add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
+
   create_table "dances", :force => true do |t|
     t.string   "name"
     t.string   "type"
@@ -37,6 +51,15 @@ ActiveRecord::Schema.define(:version => 20111016030309) do
     t.datetime "updated_at"
     t.string   "encrypted_password"
     t.string   "salt"
+  end
+
+  create_table "videos", :force => true do |t|
+    t.string   "title"
+    t.string   "description"
+    t.string   "yt_video_id"
+    t.boolean  "is_complete", :default => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

@@ -8,6 +8,7 @@ body {
 
 header {
   padding-top: 0px;
+    margin-left: 3em;
 }
 
 header img {
@@ -17,11 +18,12 @@ header img {
 
 
 section {
-  margin-top: 2em;
-  margin-left: 0.6em;
-  padding: 20px;
+  margin-top: 5em;
+  margin-left: 3em;
+  padding: 30px;
   background: #fff;
-  width: 800px;
+  /*width: 800px;*/
+    width:100%;
 }
 
 /* Links */
@@ -56,9 +58,11 @@ nav ul {
 }
 
 nav ul li {
+  text-transform:capitalize;
   list-style-type: none;
   display: inline-block;
   padding: 0 0 0.6em 0;
+    font-size: 150%;
 }
 
 nav ul li a {

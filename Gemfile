@@ -1,10 +1,15 @@
 source 'http://rubygems.org'
 
+
 gem 'rails', '3.0.9'
 gem 'gravatar_image_tag', '1.0.0.pre2'
 gem 'will_paginate', '3.0.pre2'
 gem 'sqlite3', '1.3.3'
 gem 'jquery-rails', '>= 1.0.3'
+
+gem 'youtube_it', '2.0.1'
+gem 'inherited_resources'
+gem 'acts_as_commentable'
 group :development do
   gem 'rspec-rails', '2.6.1'
   gem 'annotate', '2.4.0'

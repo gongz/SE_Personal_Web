@@ -6,19 +6,27 @@ class RoutinesController < ApplicationController
       @routine = Routine.paginate(:page => params[:page])
    end
    dance_num = @user.dance.count
-   @last_routine = current_user.routine.find_by_routine_number(dance_num)
-   @last_dance = Dance.find_by_id(@last_routine.dance_id)
-   if @last_dance.laststep != @dance.laststep
+    if dance_num >0
+      @last_routine = current_user.routine.find_by_routine_number(dance_num)
+      @last_dance = Dance.find_by_id(@last_routine.dance_id)
+      if @last_dance.laststep != @dance.laststep
+        current_user.add_dance!(@dance,dance_num+1)
+        respond_to do |format|
+          format.html { redirect_to dance_path }
+          format.js
+        end
+      else
+        respond_to do |format|
+          format.js { render :js => "window.location.replace('users');" }
+        end
+      end
+    else
       current_user.add_dance!(@dance,dance_num+1)
-      respond_to do |format|
-        format.html { redirect_to dance_path }
-        format.js
-      end
-   else
-      respond_to do |format|
-        format.js { render :js => "window.location.replace('users');" }
-      end
-   end
+        respond_to do |format|
+          format.html { redirect_to dance_path }
+          format.js
+        end
+    end
   end
 
 

@@ -5,15 +5,34 @@ SEPersonalWeb::Application.routes.draw do
   get "routines/destroy"
 
   root :to => 'pages#home'
+
   resources :users
   resources :sessions, :only => [:new, :create, :destroy]
   resources :routines
+
+
+
+  resources :videos do
+    member do
+      post :add_comment
+    end
+    new do
+       post :upload
+       get  :save_video
+     end
+  end
+
+
+  match "videos/:id/add_comment", :to => "videos#add_comment"
+  match "videoclass" , :to =>"videos#index"
   match '/home', :to => 'pages#home'
   match '/signup',  :to => 'users#new'
   match '/signin',  :to => 'sessions#new'
   match '/signout', :to => 'sessions#destroy'
   match '/dance', :to => 'dance#index'
   match '/delete', :to => 'routine#destroy'
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
